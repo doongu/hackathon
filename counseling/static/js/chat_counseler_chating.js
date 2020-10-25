@@ -127,17 +127,7 @@ function init() {
 
 function chatWS() { //연결
     ws = new WebSocket(WS_URL);
-    ws.onopen = function() {
-        state.state = 2; //상담 대기 중
-        jsonContent = JSON.stringify(state);
-        ws.send(jsonContent);
-    };
-    ws.onclose = function(para) {
-        chatClose(para);
-        state.state = 0; //오프라인
-        jsonContent = JSON.stringify(state);
-        ws.send(jsonContent);
-    }
+    
     ws.onmessage = function(para) {
         chatMessage(para);
     }
