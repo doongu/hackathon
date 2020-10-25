@@ -26,7 +26,7 @@ SECRET_KEY = 'l-*6yvwxe!1kw8o$54hj7%z+$pip)c7o&wr0s46t*hb4*@ep9j'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['stones-in-greenhouse.koreacentral.cloudapp.azure.com']
 
 
 # Application definition
