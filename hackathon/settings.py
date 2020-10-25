@@ -88,14 +88,14 @@ SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
 DATABASES = {
-    # 'default': {
-    #     'ENGINE': 'django.db.backends.sqlite3',
-    #     'NAME':  '/home/codespace/workspace/django_venv/myvenv/hackathon/db.sqlite3',
-    # }
     'default': {
-        'ENGINE': 'djongo',
-        'NAME':'mongodb',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME':  BASE_DIR / 'db.sqlite3',
     }
+    # 'default': {
+    #     'ENGINE': 'djongo',
+    #     'NAME':'mongodb',
+    # }
 }
 
 
