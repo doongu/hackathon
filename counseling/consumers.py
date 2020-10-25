@@ -49,5 +49,6 @@ class ChatConsumer(WebsocketConsumer):
         application = event['application']
         print(application)
         self.send(text_data=json.dumps({
+            'type': 'apply',
             'application':application
         }))
