@@ -140,7 +140,7 @@ function chatMessage(para) { //수신 데이터 분별 및 함수 호출
     jsonParsing = JSON.parse(para);
     switch(jsonParsing.type) {
         case 'apply':
-		    console.log(jsonPrasing);
+		console.log(para);
             receiveApp(jsonParsing);
             break;
         case 'accept':
