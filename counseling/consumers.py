@@ -36,7 +36,7 @@ class ChatConsumer(WebsocketConsumer):
                 str(user.counseler),
                 {
                     "type": "apply",
-                    "applicatoin": application,
+                    "application": application,
                 },
             )
         elif _type == 'accept':
