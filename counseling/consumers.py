@@ -33,6 +33,7 @@ class ChatConsumer(WebsocketConsumer):
                 'company': user.company,
                 'reason': data['application']['reason']
             }
+            print(user.counseler)
             async_to_sync(self.channel_layer.group_send)(
                 str(user.counseler),
                 {
@@ -47,7 +48,7 @@ class ChatConsumer(WebsocketConsumer):
 
     def apply(self, event):
         application = event['application']
-        print(application)
+        print(self.__dict__.items())
         self.send(text_data=json.dumps({
             'type': 'apply',
             'application':application
