@@ -30,7 +30,7 @@ class ChatConsumer(WebsocketConsumer):
             application = {
                 'name': user.name,
                 'company': user.company,
-                'reason': data['applicatoin']['reason']
+                'reason': data['application']['reason']
             }
             async_to_sync(self.channel_layer.group_send)(
                 str(user.counseler),
