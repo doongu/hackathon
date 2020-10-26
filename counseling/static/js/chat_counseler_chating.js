@@ -248,6 +248,9 @@ function chatFinish() { //연결 중단
     headerLog.classList.add('vanish');
     connectFlag = false;
     turnReady();
+	ws.send(JSON.stringfy({
+		'type':'exit'
+	}));
 }
 
 function printReceive(message) { //수신 메시지 출력
