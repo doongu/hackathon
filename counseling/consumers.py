@@ -63,6 +63,13 @@ class ChatConsumer(WebsocketConsumer):
                     "message": data['message'],
                 },
             )
+        elif _type == 'exit':
+            async_to_sync(self.channel_layer.group_send)(
+                str(user.counseler),
+                {
+                    "type": "exit"
+                },
+            )
 
     def apply(self, event):
         application = event['application']
@@ -79,4 +86,9 @@ class ChatConsumer(WebsocketConsumer):
         self.send(text_data=json.dumps({
             'type': 'message',
             'message': event['message']
+        }))
+    def exit(self, event):
+        self.send(text_data=json.dumps({
+            'type': 'accept',
+            'class': 'exit'
         }))
