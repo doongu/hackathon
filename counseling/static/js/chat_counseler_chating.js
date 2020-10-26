@@ -137,7 +137,7 @@ function chatWS() { //연결
 }
 
 function chatMessage(para) { //수신 데이터 분별 및 함수 호출
-    jsonParsing = para;
+    jsonParsing = para.currentTarget.data;
     switch(jsonParsing.type) {
         case 'apply':
             receiveApp(jsonParsing);
@@ -201,7 +201,6 @@ function turnIng() {
 
 function receiveApp(info) { //상담 정보 모달
     turnIng();
-	info = info.currentTarget.data
 	console.log(info)
     let modalInfoBox = document.createElement('p');
     let modalReceiveBox = document.createElement('p');
