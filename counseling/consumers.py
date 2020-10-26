@@ -45,7 +45,7 @@ class ChatConsumer(WebsocketConsumer):
             )
         elif _type == 'accept':
             packet = {
-                'type': 'accept',
+                'type': '_accept',
                 'class': 'accept'
             }
             async_to_sync(self.channel_layer.group_send)(
@@ -64,7 +64,7 @@ class ChatConsumer(WebsocketConsumer):
             'type': 'apply',
             'application':application
         }))
-    def accept(self, event):
+    def _accept(self, event):
         self.send(text_data=json.dumps({
             'type': 'accept',
             'class': 'accept'
