@@ -152,6 +152,7 @@ function chatMessage(para) { //수신 데이터 분별 및 함수 호출
 		    headerLog.classList.add('vanish');
 		    connectFlag = false;
 		    turnReady();
+		    break;
         case 'message':
             printReceive(jsonParsing.message);
             break;
