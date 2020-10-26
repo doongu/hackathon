@@ -51,7 +51,7 @@ class ChatConsumer(WebsocketConsumer):
             async_to_sync(self.channel_layer.group_send)(
                 str(user.counseler),
                 {
-                    "type": "accept",
+                    "type": "_accept",
                     "packet": packet,
                 },
             )
