@@ -203,7 +203,7 @@ function turnIng() {
 
 function receiveApp(info) { //상담 정보 모달
     turnIng();
-	info = info.data
+	info = info.currentTarget.data
     let modalInfoBox = document.createElement('p');
     let modalReceiveBox = document.createElement('p');
     chatModal.removeAttribute('class'); //모달 페이지 출력
