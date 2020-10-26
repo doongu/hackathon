@@ -256,6 +256,9 @@ function chatFinish() { //연결 중단
     headerChating.classList.add('vanish');
     headerLog.classList.add('vanish');
     connectFlag = false;
+	ws.send(JSON.stringfy({
+		'type':'exit'
+	}));
 }
 
 function sendCounInfoReady() {
