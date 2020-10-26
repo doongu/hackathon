@@ -144,7 +144,14 @@ function chatMessage(para) { //수신 데이터 분별 및 함수 호출
             receiveApp(jsonParsing);
             break;
         case 'accept':
-            chatFinish();
+		    COUN_ONLINE.removeAttribute('class');
+		    COUN_FINISH.classList.add('vanish');
+		    headerCounWait.removeAttribute('class');
+		    headerCounReceive.classList.add('vanish');
+		    headerCounEnding.classList.add('vanish');
+		    headerLog.classList.add('vanish');
+		    connectFlag = false;
+		    turnReady();
         case 'message':
             printReceive(jsonParsing.message);
             break;
@@ -248,7 +255,7 @@ function chatFinish() { //연결 중단
     headerLog.classList.add('vanish');
     connectFlag = false;
     turnReady();
-	ws.send(JSON.stringfy({
+	ws.send(JSON.stringify({
 		'type':'exit'
 	}));
 }
