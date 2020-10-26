@@ -233,8 +233,6 @@ function closeModal() {
     connectFlag = true;
     ws.send(jsonContent);
     state.state = 4; //상담 중
-    jsonContent = JSON.stringify(state);
-    ws.send(jsonContent);
 }
 
 function chatFinishClick() {
@@ -312,13 +310,12 @@ function chatsend() { //입력 메시지 발신
     }
     else {
         if (!input.value == '') {
-            _message.data = input.value;
+            _message.message = input.value;
             printSend(_message.message);
             jsonContent = JSON.stringify(_message);
             input.focus();
             input.value = null;
             ws.send(jsonContent);
-            ws.send(JSON.stringify(message_is_delivered));
         }
     } 
 }
