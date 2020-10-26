@@ -137,7 +137,7 @@ function chatWS() { //연결
 }
 
 function chatMessage(para) { //수신 데이터 분별 및 함수 호출
-    jsonParsing = JSON.parse(para);
+    jsonParsing = para;
     switch(jsonParsing.type) {
         case 'apply':
 		console.log(para);
