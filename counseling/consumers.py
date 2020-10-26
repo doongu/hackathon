@@ -27,7 +27,9 @@ class ChatConsumer(WebsocketConsumer):
         _type = data['type']
         user = self.scope['user']
         if _type == 'apply':
-            user.counseler.counseler_id = user.id
+            counseler = user.counseler
+            counseler.counseler_id = user.id
+            counseler.save()
             application = {
                 'type': 'apply',
                 'name': user.name,
