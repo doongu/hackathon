@@ -9,16 +9,27 @@ from django.shortcuts import get_object_or_404
 class ChatConsumer(WebsocketConsumer):
     def connect(self):
         user = self.scope['user']
+        try:
+            ids = str(user).index('@')
+            _user = str(user)[:ids] + str(user)[ids+1:]
+        except:
+            _user = str(user)
         if user.is_authenticated:
             async_to_sync(self.channel_layer.group_add)(
-                str(user),
+                str(_user),
                 self.channel_name
             )
             self.accept()
 
     def disconnect(self, close_code):
+        user = self.scope['user']
+        try:
+            ids = str(user).index('@')
+            _user = str(user)[:ids] + str(user)[ids+1:]
+        except:
+            _user = str(user)
         async_to_sync(self.channel_layer.group_discard)(
-            str(self.scope['user']),
+            _user,
             self.channel_name
         )
 
