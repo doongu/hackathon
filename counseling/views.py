@@ -43,7 +43,7 @@ def signUp(request):
     signUpBirthMonth = data["signUpBirthMonth"]
     signUpBirthDay = data["signUpBirthDay"]
     user = User.objects.create_user(
-        username=signUpId, password=signUpPw, birthday=signUpBirthYear+'-'+signUpBirthMonth.zfill(2)+'-'+signUpBirthDay.zfill(2), counseler_id=1
+        username=signUpId, password=signUpPw, birthday=signUpBirthYear+'-'+signUpBirthMonth.zfill(2)+'-'+signUpBirthDay.zfill(2), counseler_id=2
     )
     user.is_active = False
     user.save()
