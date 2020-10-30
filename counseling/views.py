@@ -1,8 +1,7 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
-from django.contrib.sessions.models import Session
-from django.utils import timezone
+from .models import User
 
 import jwt
 from django.core.mail import EmailMessage
@@ -43,6 +42,11 @@ def signUp(request):
     signUpBirthYear = data["signUpBirthYear"]
     signUpBirthMonth = data["signUpBirthMonth"]
     signUpBirthDay = data["signUpBirthDay"]
+    user = User.objects.create_user(
+        username=signUpId, password=signUpPw, birthday=signUpBirthYear+signUpBirthMonth+signUpBirthDay, counslser_id=1
+    )
+    user.is_active = False
+    user.save()
     data = {
         'id': signUpId,
         'name' : signUpName,
@@ -63,5 +67,8 @@ def signUp(request):
 def email_activate(request, token):
     payload = jwt.decode(token, SECRET_KEY, ALGORITHM)
     name = payload['name']
+    user = get_object_or_404(User, username=payload['id'])
+    user.is_active=True
+    user.save()
     result = True
     return render(request, 'counseling/mail_success.html', {"mail_success": result, "signName" : name} )
