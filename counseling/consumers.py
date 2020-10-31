@@ -81,6 +81,14 @@ class ChatConsumer(WebsocketConsumer):
                     "type": "exit"
                 },
             )
+        elif _type == 'paint':
+            async_to_sync(self.channel_layer.group_send)(
+                str(user.counseler),
+                {
+                    "type": "paint",
+                    "message": data['message'],
+                },
+            )
 
     def apply(self, event):
         application = event['application']
@@ -102,4 +110,9 @@ class ChatConsumer(WebsocketConsumer):
         self.send(text_data=json.dumps({
             'type': 'accept',
             'class': 'exit'
+        }))
+    def paint(self, event):
+        self.send(text_data=json.dumps({
+            'type':'paint',
+            'message': event['message']
         }))

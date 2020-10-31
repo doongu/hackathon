@@ -154,13 +154,10 @@ function chatMessage(para) { //수신 데이터 분별 및 함수 호출
 		    turnReady();
 		    break;
         case 'message':
-            if (jsonParsing.type == 'message') {
-                printReceive(jsonParsing.message);
-                break;
-            }
-            else {
-                printReceivePaint(jsonParsing.message);
-            }
+            printReceive(jsonParsing.message);
+            break;
+        case 'paint':
+            printReceivePaint(jsonParsing.message);
         case 'message_is_delivered':
             sendComplete();
             break;
