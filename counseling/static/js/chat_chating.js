@@ -167,7 +167,7 @@ function chatMessage(para) { //수신 데이터 분별 및 함수 호출
         case 'message':
             printReceive(jsonParsing.message);
             break;
-        case 'paing':
+        case 'paint':
             printReceivePaint(jsonParsing.message);
         case 'message_is_delivered':
             sendComplete();
