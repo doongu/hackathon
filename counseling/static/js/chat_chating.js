@@ -140,7 +140,6 @@ function chatWS() { //연결
 
 function chatMessage(para) { //수신 데이터 분별 및 함수 호출
     jsonParsing = JSON.parse(para.data);
-    console.log(jsonParsing)
     switch(jsonParsing.type) {
         case 'accept':
             if (jsonParsing.class == 'accept') {
